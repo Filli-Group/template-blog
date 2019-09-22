@@ -1,0 +1,23 @@
+{# File Version 1.0 [21.09.2019] #}
+
+{% extends 'app.twig' %}
+
+{% block content_error %}
+    <div class="content-center">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="title">{{ error }}</h1>
+                {% if error == '404' %}
+                    <h2>Page not found :(</h2>
+                    <h4>Ooooups! Looks like you got lost.</h4>
+                {% elseif error == '405' %}
+                    <h2>Method Not Allowed</h2>
+                    <h4>The method specified in the Request-Line is not allowed for the specified resource.</h4>
+                {% elseif error == '500' %}
+                    <h2>Internal Server Error</h2>
+                    <h4>The request was unsuccessful due to an unexpected condition encountered by the server.</h4>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

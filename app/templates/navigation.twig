@@ -1,0 +1,73 @@
+{# File Version 1.0 [21.09.2019] #}
+
+{% if error is defined %}
+<nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top text-white">
+    <div class="container">
+        <div class="navbar-wrapper">
+            <a class="navbar-brand" href='{{ base_url() }}'>
+                {{ brand }}
+            </a>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end">
+            <ul class="navbar-nav">
+                {% else %}
+                <nav class="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg"
+                     color-on-scroll="100" id="sectionsNav">
+                    <div class="container">
+                        <div class="navbar-translate">
+                            <a class="navbar-brand" href='{{ base_url() }}'>
+                                {{ brand }}
+                            </a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false"
+                                    aria-label="Toggle navigation">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="navbar-toggler-icon"></span>
+                                <span class="navbar-toggler-icon"></span>
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                        </div>
+                        <div class="collapse navbar-collapse">
+                            <ul class="navbar-nav ml-auto">
+                                {% endif %}
+                                {# Start Nav Content #}
+                                <li class="dropdown nav-item">
+                                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                                        <i class="material-icons">apps</i> Projekte
+                                    </a>
+                                    <div class="dropdown-menu dropdown-with-icons">
+                                        <a href='https://www.SuperLandNetwork.de' class="dropdown-item">
+                                            <i class="material-icons">gamepad</i> SuperLandNetwork.de
+                                        </a>
+                                        <a href='https://www.gmcbm.net' class="dropdown-item">
+                                            <i class="material-icons">gavel</i> Global Minecraft Ban Manager
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="dropdown nav-item">
+                                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                                        <i class="material-icons">list</i> Filli Group
+                                    </a>
+                                    <div class="dropdown-menu dropdown-with-icons">
+                                        <a href='https://www.Filli-Group.com' class="dropdown-item">
+                                            <i class="material-icons">business</i> Filli Group
+                                        </a>
+                                        <a href='https://www.Filli-IT.ch' class="dropdown-item">
+                                            <i class="material-icons">code</i> Filli IT
+                                        </a>
+                                        <a href='https://www.Filli-Payment.ch' class="dropdown-item">
+                                            <i class="material-icons">payment</i> Filli Payment
+                                        </a>
+                                    </div>
+                                </li>
+                                {# End Nav Content #}
+                            </ul>
+                        </div>
+                    </div>
+                </nav>

@@ -1,0 +1,23 @@
+{# File Version 1.0 [21.09.2019] #}
+
+<footer class="footer footer-default">
+    <div class="container">
+        <nav class="float-left">
+            <ul>
+                <li>
+                    <a href='{{ base_url() }}/legal/imprint' target='_blank'>
+                        Impressum
+                    </a>
+                </li>
+                <li>
+                    <a href='{{ base_url() }}/legal/privacy' target='_blank'>
+                        Datenschutz
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="copyright float-right">
+            Copyright &copy; {{ 'now'|date('Y') }} {{ footer_company }} und/oder mit ihr verbundene Unternehmen.
+        </div>
+    </div>
+</footer>

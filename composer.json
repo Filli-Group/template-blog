@@ -1,0 +1,32 @@
+{
+  "name": "filli-group/template-website",
+  "description": "Template Website Based on the Slim 3 Framework",
+  "license": "MIT",
+  "type": "project",
+  "authors": [
+    {
+      "name": "Ursin Filli",
+      "email": "mail@ursinn.dev",
+      "homepage": "https://www.ursinn.dev"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/src"
+    }
+  },
+  "require": {
+    "slim/slim": "^3.0",
+    "slim/twig-view": "^2.0",
+    "slim/flash": "^0.4.0",
+    "slim/csrf": "^0.8.3",
+    "illuminate/database": "^5.6",
+    "respect/validation": "^1.1",
+    "google/recaptcha": "^1.2",
+    "monolog/monolog": "^1.13",
+    "vlucas/phpdotenv": "^3.6",
+    "kanellov/slim-twig-flash": "^0.2.0",
+    "akrabat/ip-address-middleware": "^1.0",
+    "ramsey/uuid": "^3.8"
+  }
+}
