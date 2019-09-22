@@ -1,6 +1,6 @@
 {
-  "name": "filli-group/template-website",
-  "description": "Template Website Based on the Slim 3 Framework",
+  "name": "filli-group/template-blog",
+  "description": "Template Blog Based on the Slim 3 Framework",
   "license": "MIT",
   "type": "project",
   "authors": [
