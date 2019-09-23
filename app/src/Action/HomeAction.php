@@ -49,10 +49,10 @@ final class HomeAction
         $this->logger->info("Home page action dispatched");
 
         $this->view->render($response, 'pages/home.twig', array(
-            'title' => 'Coming Soon',
-            'error' => '',
-            'css' => 'https://cdn.staticaly.com/gl/filli-group/css/raw/4b353dcb544cb9774c9e2f613dfc46d5b2e95b08/material-dashboard.min.css',
-            'bg_img' => 'https://cdn.staticaly.com/img/i.imgur.com/a5ScUSW.jpg',
+            'title' => 'Home',
+            'page_title' => 'Clean Blog',
+            'page_sub_title' => 'A Blog Theme by Start Bootstrap',
+            'bg_img' => 'https://cdn.statically.io/img/i.imgur.com/LcWoFNZ.jpg',
         ));
         return $response;
     }

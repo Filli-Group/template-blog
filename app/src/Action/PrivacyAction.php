@@ -52,7 +52,7 @@ final class PrivacyAction
             'title' => 'Datenschutz',
             'page_title' => 'Datenschutzerklärung',
             'page_sub_title' => $_SERVER['APP_PAGE_BRAND'],
-            'legal' => '',
+            'bg_img' => 'https://cdn.statically.io/img/i.imgur.com/EgI8EhL.jpg',
         ));
         return $response;
     }
