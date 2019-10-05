@@ -28,12 +28,14 @@
 
 namespace App\Action;
 
+use App\Models\Author;
+use App\Models\Post;
 use Psr\Log\LoggerInterface;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use Slim\Views\Twig;
 
-final class PrivacyAction
+final class PostAction
 {
     private $view;
     private $logger;
@@ -46,13 +48,36 @@ final class PrivacyAction
 
     public function __invoke(Request $request, Response $response, $args)
     {
-        $this->logger->info("Privacy page action dispatched");
+        $this->logger->info("Post page action dispatched");
 
-        $this->view->render($response, 'pages/legal/privacy.twig', array(
-            'title' => 'Datenschutz',
-            'page_title' => 'Datenschutzerklärung',
-            'page_sub_title' => $_SERVER['APP_PAGE_BRAND'],
-            'bg_img' => 'https://cdn.statically.io/img/i.imgur.com/EgI8EhL.jpg',
+        if (Post::find($args['id']) == null) {
+            $e = '404';
+            return $this->view->render($response, 'error.twig', array(
+                'title' => $e,
+                'error' => $e,
+                'page_title' => $e,
+                'page_sub_title' => 'Page not found :(',
+                'bg_img' => 'https://cdn.statically.io/img/i.imgur.com/LcWoFNZ.jpg',
+            ))->withStatus(404);
+        }
+
+        $post = Post::find($args['id']);
+        $author = Author::find($post->authorId);
+
+        $array = [
+            'text' => $post->text,
+            'date_create' => date('F d, Y', strtotime($post->created_at)),
+            'date_update' => date('F d, Y', strtotime($post->updated_at)),
+            'author_name' => $author->name,
+            'author_id' => $author->id,
+        ];
+
+        $this->view->render($response, 'post.twig', array(
+            'title' => 'Post',
+            'page_title' => $post->title,
+            'page_sub_title' => $post->description,
+            'bg_img' => 'https://cdn.statically.io/img/i.imgur.com/'.$post->img.'.jpg',
+            'post' => $array,
         ));
         return $response;
     }

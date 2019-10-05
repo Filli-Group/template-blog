@@ -30,10 +30,17 @@
 
 $app->get('/', App\Action\HomeAction::class)
     ->setName('homepage');
+$app->get('/about', App\Action\AboutAction::class)
+    ->setName('about');
+$app->get('/contact', App\Action\ContactAction::class)
+    ->setName('contact');
+$app->get('/post/{id}', App\Action\PostAction::class)
+    ->setName('post');
+$app->get('/author/{id}', App\Action\AuthorAction::class)
+    ->setName('author');
 $app->group('/legal', function () use ($app) {
     $app->get('/imprint', App\Action\ImprintAction::class)
-        ->setName('imprint');
+        ->setName('legal.imprint');
     $app->get('/privacy', App\Action\PrivacyAction::class)
-        ->setName('privacy');
-
+        ->setName('legal.privacy');
 });

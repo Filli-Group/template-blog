@@ -33,7 +33,7 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 use Slim\Views\Twig;
 
-final class PrivacyAction
+final class AboutAction
 {
     private $view;
     private $logger;
@@ -46,12 +46,12 @@ final class PrivacyAction
 
     public function __invoke(Request $request, Response $response, $args)
     {
-        $this->logger->info("Privacy page action dispatched");
+        $this->logger->info("About page action dispatched");
 
-        $this->view->render($response, 'pages/legal/privacy.twig', array(
-            'title' => 'Datenschutz',
-            'page_title' => 'Datenschutzerklärung',
-            'page_sub_title' => $_SERVER['APP_PAGE_BRAND'],
+        $this->view->render($response, 'pages/about.twig', array(
+            'title' => 'About',
+            'page_title' => 'About Me',
+            'page_sub_title' => 'This is what I do.',
             'bg_img' => 'https://cdn.statically.io/img/i.imgur.com/EgI8EhL.jpg',
         ));
         return $response;

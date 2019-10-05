@@ -1,23 +1,21 @@
-{# File Version 1.0 [21.09.2019] #}
+{# File Version 1.1 [28.09.2019] #}
 
-<footer class="footer footer-default">
+<footer>
     <div class="container">
-        <nav class="float-left">
-            <ul>
-                <li>
-                    <a href='{{ base_url() }}/legal/imprint' target='_blank'>
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <p class="copyright text-muted">
+                    <a class="text-muted" style="text-decoration: none" href='{{ path_for('legal.imprint') }}' target='_blank'>
                         Impressum
                     </a>
-                </li>
-                <li>
-                    <a href='{{ base_url() }}/legal/privacy' target='_blank'>
+                    &nbsp;
+                    <a class="text-muted" style="text-decoration: none" href='{{ path_for('legal.privacy') }}' target='_blank'>
                         Datenschutz
                     </a>
-                </li>
-            </ul>
-        </nav>
-        <div class="copyright float-right">
-            Copyright &copy; {{ 'now'|date('Y') }} {{ footer_company }} und/oder mit ihr verbundene Unternehmen.
+                    <br>
+                    Copyright &copy; {{ 'now'|date('Y') }} {{ footer_company }} und/oder mit ihr verbundene Unternehmen.
+                </p>
+            </div>
         </div>
     </div>
 </footer>

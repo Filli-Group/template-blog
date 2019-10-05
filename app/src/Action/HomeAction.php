@@ -28,6 +28,8 @@
 
 namespace App\Action;
 
+use App\Models\Author;
+use App\Models\Post;
 use Psr\Log\LoggerInterface;
 use Slim\Http\Request;
 use Slim\Http\Response;
@@ -48,11 +50,26 @@ final class HomeAction
     {
         $this->logger->info("Home page action dispatched");
 
+        $posts_db = Post::all();
+        $posts = [];
+        foreach ($posts_db as $post) {
+            $author = Author::find($post->authorId);
+            array_push($posts, [
+                'post' => $post->id,
+                'title' => $post->title,
+                'description' => $post->description,
+                'date_create' => date('F d, Y', strtotime($post->created_at)),
+                'author_name' => $author->name,
+                'author_id' => $author->id,
+            ]);
+        }
+
         $this->view->render($response, 'pages/home.twig', array(
-            'title' => 'Coming Soon',
-            'error' => '',
-            'css' => 'https://cdn.staticaly.com/gl/filli-group/css/raw/4b353dcb544cb9774c9e2f613dfc46d5b2e95b08/material-dashboard.min.css',
-            'bg_img' => 'https://cdn.staticaly.com/img/i.imgur.com/a5ScUSW.jpg',
+            'title' => 'Home',
+            'page_title' => 'Clean Blog',
+            'page_sub_title' => 'A Blog Theme by Start Bootstrap',
+            'bg_img' => 'https://cdn.statically.io/img/i.imgur.com/LcWoFNZ.jpg',
+            'posts' => $posts,
         ));
         return $response;
     }

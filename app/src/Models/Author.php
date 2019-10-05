@@ -26,34 +26,13 @@
  *
  */
 
-namespace App\Action;
+namespace App\Models;
 
-use Psr\Log\LoggerInterface;
-use Slim\Http\Request;
-use Slim\Http\Response;
-use Slim\Views\Twig;
+use Illuminate\Database\Eloquent\Model as Eloquent;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-final class PrivacyAction
+class Author extends Eloquent
 {
-    private $view;
-    private $logger;
-
-    public function __construct(Twig $view, LoggerInterface $logger)
-    {
-        $this->view = $view;
-        $this->logger = $logger;
-    }
-
-    public function __invoke(Request $request, Response $response, $args)
-    {
-        $this->logger->info("Privacy page action dispatched");
-
-        $this->view->render($response, 'pages/legal/privacy.twig', array(
-            'title' => 'Datenschutz',
-            'page_title' => 'Datenschutzerklärung',
-            'page_sub_title' => $_SERVER['APP_PAGE_BRAND'],
-            'bg_img' => 'https://cdn.statically.io/img/i.imgur.com/EgI8EhL.jpg',
-        ));
-        return $response;
-    }
+    use SoftDeletes;
+    protected $table = 'authors';
 }

@@ -105,6 +105,22 @@ $container[App\Action\HomeAction::class] = function ($c) {
     return new App\Action\HomeAction($c->get('view'), $c->get('logger'));
 };
 
+$container[App\Action\AboutAction::class] = function ($c) {
+    return new App\Action\AboutAction($c->get('view'), $c->get('logger'));
+};
+
+$container[App\Action\ContactAction::class] = function ($c) {
+    return new App\Action\ContactAction($c->get('view'), $c->get('logger'));
+};
+
+$container[App\Action\PostAction::class] = function ($c) {
+    return new App\Action\PostAction($c->get('view'), $c->get('logger'));
+};
+
+$container[App\Action\AuthorAction::class] = function ($c) {
+    return new App\Action\AuthorAction($c->get('view'), $c->get('logger'));
+};
+
 $container[App\Action\ImprintAction::class] = function ($c) {
     return new App\Action\ImprintAction($c->get('view'), $c->get('logger'));
 };
@@ -120,10 +136,13 @@ $container[App\Action\PrivacyAction::class] = function ($c) {
 // File Not Found
 $container['notFoundHandler'] = function ($container) {
     return function ($request, $response) use ($container) {
+        $e = '404';
         return $container->view->render($response, 'error.twig', array(
-            'title' => '404',
-            'error' => '404',
-            'css' => 'https://cdn.staticaly.com/gl/filli-group/css/raw/4b353dcb544cb9774c9e2f613dfc46d5b2e95b08/material-dashboard.min.css',
+            'title' => $e,
+            'error' => $e,
+            'page_title' => $e,
+            'page_sub_title' => 'Page not found :(',
+            'bg_img' => 'https://cdn.statically.io/img/i.imgur.com/LcWoFNZ.jpg',
         ))->withStatus(404);
     };
 };
@@ -131,10 +150,13 @@ $container['notFoundHandler'] = function ($container) {
 // Method Not Allowed
 $container['notAllowedHandler'] = function ($container) {
     return function ($request, $response) use ($container) {
+        $e = '405';
         return $container->view->render($response, 'error.twig', array(
-            'title' => '405',
-            'error' => '405',
-            'css' => 'https://cdn.staticaly.com/gl/filli-group/css/raw/4b353dcb544cb9774c9e2f613dfc46d5b2e95b08/material-dashboard.min.css',
+            'title' => $e,
+            'error' => $e,
+            'page_title' => $e,
+            'page_sub_title' => 'Method Not Allowed',
+            'bg_img' => 'https://cdn.statically.io/img/i.imgur.com/LcWoFNZ.jpg',
         ))->withStatus(405);
     };
 };
@@ -142,10 +164,13 @@ $container['notAllowedHandler'] = function ($container) {
 // Internal Server Error
 $container['errorHandler'] = function ($container) {
     return function ($request, $response) use ($container) {
+        $e = '500';
         return $container->view->render($response, 'error.twig', array(
-            'title' => '500',
-            'error' => '500',
-            'css' => 'https://cdn.staticaly.com/gl/filli-group/css/raw/4b353dcb544cb9774c9e2f613dfc46d5b2e95b08/material-dashboard.min.css',
+            'title' => $e,
+            'error' => $e,
+            'page_title' => $e,
+            'page_sub_title' => 'Internal Server Error',
+            'bg_img' => 'https://cdn.statically.io/img/i.imgur.com/LcWoFNZ.jpg',
         ))->withStatus(500);
     };
 };
